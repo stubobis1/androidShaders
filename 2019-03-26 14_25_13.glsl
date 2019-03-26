@@ -43,19 +43,30 @@ vec4 gettexat(vec2 pos)
 {
 	vec4 col;
 	col = vec4(
-		pnoise (modpos(vec2(pos.x * 8., pos.y * 10.)))
+		pnoise (modpos(vec2(pos.x * 8., pos.y * 0.6)))
 	);
+
+	col *= vec4(.717,.545,.141,1.);
 	//texture2D(checkers,pos);
 	//texture2D(noise,pos);
 
 	//col.r = texture2D(checkers,pos * 3.).r;
 	//col.r = checker( pos ,8. + time,20.);
-	col.r =  (modpos(vec2(pos.x * 16., pos.y * 20.))).r;
+	float vq =  (modpos(vec2(pos.x * 6., pos.y * 40.))).r * .7;
 
-	col.g = (col.r + col.b) * .5;
+
+
+
+	float vw =  (modpos(vec2(pos.x * -8., pos.y * 0.))).r;
+
+
+
+	//col.g = (col.r + col.b) * .5;
 	//col.g = checker( pos ,4.1,10.);
 	//col.b /= 1. /( col.b + col.g);
 
+
+	col += vec4 (.2,.3,.5 ,.1) *vq;
 	return col;
 	}
 
